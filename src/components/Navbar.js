@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 function Navbar(props) {
-  console.log(props);
   return (
     <div className="flex border shadow-xl justify-between items-center px-8">
       <Link to={"/"}>
