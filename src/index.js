@@ -13,12 +13,14 @@ import Home from "./pages/Home";
 import Top10 from "./pages/Top10";
 import Trending from "./pages/Trending";
 import Watchlist from "./pages/Watchlist";
+import Footer from "./components/Footer";
 
 const Applayout = () => {
   return (
     <div>
       <Navbar />
       <Outlet />
+      <Footer />
     </div>
   );
 };
