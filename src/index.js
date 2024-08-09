@@ -14,13 +14,14 @@ import Top10 from "./pages/Top10";
 import Trending from "./pages/Trending";
 import Watchlist from "./pages/Watchlist";
 import Footer from "./components/Footer";
+import CoinByID from "./pages/CoinByID";
 
 const Applayout = () => {
   return (
     <div>
       <Navbar />
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
@@ -33,6 +34,7 @@ const appRouter = createBrowserRouter([
       { path: "/top10", element: <Top10 /> },
       { path: "/watchlist", element: <Watchlist /> },
       { path: "/trending", element: <Trending /> },
+      { path: "/coin/:id", element: <CoinByID /> },
     ],
   },
 ]);
