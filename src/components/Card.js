@@ -3,8 +3,21 @@ import { MdOutlineStar } from "react-icons/md";
 import { FaArrowTrendDown } from "react-icons/fa6";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Data } from "../index";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { handleAdd } from "../store/watchlistSlice";
+
 const Card = ({ item, checker }) => {
-  console.log(item);
+  const watchlist = useSelector((store) => store.watchlist);
+
+  const dispatch = useDispatch();
+
+  function wathlistadd() {
+    dispatch(handleAdd(item));
+  }
+
   return (
     <div className="flex flex-col bg-cyan-100 w-full border my-4 rounded-[5px] gap-6 shadow-xl p-4 ">
       <div className="flex items-center gap-4">
@@ -23,7 +36,7 @@ const Card = ({ item, checker }) => {
             {item.symbol}
           </h2>
         </div>
-        <MdOutlineStar className="text-[40px]" />
+        <MdOutlineStar onClick={wathlistadd} className="text-[60px]" />
       </div>
 
       <div className="flex items-center gap-4">

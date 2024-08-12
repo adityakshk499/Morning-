@@ -15,14 +15,23 @@ import Trending from "./pages/Trending";
 import Watchlist from "./pages/Watchlist";
 import Footer from "./components/Footer";
 import CoinByID from "./pages/CoinByID";
+import { createContext } from "react";
+import { Provider } from "react-redux";
+import { appStore } from "./store/appStore";
+
+export const Data = createContext();
 
 const Applayout = () => {
   return (
-    <div>
-      <Navbar />
-      <Outlet />
-      {/* <Footer /> */}
-    </div>
+    <Provider store={appStore}>
+      <Data.Provider value={"Anmol"}>
+        <div>
+          <Navbar />
+          <Outlet />
+          {/* <Footer /> */}
+        </div>
+      </Data.Provider>
+    </Provider>
   );
 };
 
