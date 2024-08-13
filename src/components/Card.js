@@ -1,5 +1,6 @@
 import React from "react";
 import { MdOutlineStar } from "react-icons/md";
+import { MdOutlineStarOutline } from "react-icons/md";
 import { FaArrowTrendDown } from "react-icons/fa6";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { Link } from "react-router-dom";
@@ -7,7 +8,7 @@ import { useContext } from "react";
 import { Data } from "../index";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { handleAdd } from "../store/watchlistSlice";
+import { handleAdd, handleRemove } from "../store/watchlistSlice";
 
 const Card = ({ item, checker }) => {
   const watchlist = useSelector((store) => store.watchlist);
@@ -17,6 +18,14 @@ const Card = ({ item, checker }) => {
   function wathlistadd() {
     dispatch(handleAdd(item));
   }
+
+  function watchlistRemove() {
+    dispatch(handleRemove(item));
+  }
+
+  const isPresent = (arr, obj) => arr.some((item) => item.id === obj.id);
+  const result = isPresent(watchlist, item);
+  console.log(result);
 
   return (
     <div className="flex flex-col bg-cyan-100 w-full border my-4 rounded-[5px] gap-6 shadow-xl p-4 ">
@@ -36,7 +45,11 @@ const Card = ({ item, checker }) => {
             {item.symbol}
           </h2>
         </div>
-        <MdOutlineStar onClick={wathlistadd} className="text-[60px]" />
+        {result ? (
+          <MdOutlineStar onClick={watchlistRemove} className="text-[60px]" />
+        ) : (
+          <MdOutlineStarOutline onClick={wathlistadd} className="text-[60px]" />
+        )}
       </div>
 
       <div className="flex items-center gap-4">
